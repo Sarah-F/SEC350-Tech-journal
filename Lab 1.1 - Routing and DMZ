@@ -1,0 +1,43 @@
+Firewall (VYOS) Tech Journal
+
+Set up
+  Log inot rw01
+  Click whale, select settings, select advanced network configurations, double click wired connection 1, select 1Pv4, select manual as the method, click add
+    Address: 10.0.17.17
+    Netmask: 24
+    Gateway: 10.0.17.2
+    DNS: 10.0.17.2
+    Click save
+  Click whale, select terminal emulator, Add a sudo user using the following commands
+    #sudo -i (to log in to sudo user)
+    #adduser sarah
+    #Y
+    #usermod -aG sudo sarah
+    #hostnamectl set-hostname rw01-sarah
+    #reboot
+  
+Deliverable 1:
+Click whale, click internet, open chrome, type in champlain.edu
+
+Configuring basic routing on fw01
+  Go to the vsphere tab where you can see all your VMS
+  Click the drop down menu of VM Hardware
+  Click Edit settings 
+  Change network adapter 2 to DMZ
+  Add new device, select network adapter, select LAN
+Configure, Commit, Save and Exit … Learn this!
+  Open fw01 and log In
+Setting the Hostname (type in the following commands)
+  #configure
+  #set sytem host-name fw1-sarah
+  #commit
+  #save
+  #exit
+  #exit
+  when you log back in (and at the log in, you should see your new hostname)
+
+Interface Assignment
+  #show interfaces
+
+
+syslog Tech Journal
