@@ -163,7 +163,9 @@ go back to web01 vm
 On web01, ensure that var/www/html/index.html exists.
  #cd /var/www/html
  #ls
- #sudo touch index.html
+ #sudo nano index.html
+ <html>hi</html>
+ control x, hit y
  #ls
  make sure that index.html can be seen
  #cd
@@ -176,5 +178,62 @@ Configuring firewall on web01
   #sudo firewall-cmd --reload
 
 Testing httpd on web01 from rw01
+ Open rw01
+ Click on the whale,
+    select settings, 
+    select advanced network configurations, 
+    double click wired connection 1, 
+    select 1Pv4 settings,
+    select routes
+      Address: 172.16.50.0
+      Netmask: 29
+      Gateway: 10.0.17.117
+    click save (make sure to do this)
+
+Make sure to restart your network through the gui or from a privileged terminal command.
+#sudo nmcli networking off
+#sudo nmcli networking on
 
 syslog Tech Journal
+Configuring rsyslog services on log01
+go to log01
+    #sudo firewall-cmd --list-all
+    #firewall-cmd --zone=public --add-port=514/tcp --permanent
+    #firewall-cmd --zone=public --add-port=514/udp --permanent
+    #firewall-cmd --reload
+  On log01, the /etc/rsyslog.conf file needs to be modified to receive syslog messages over ports 514 tcp and udp.  Uncomment the appropriate lines (see below) and restart the rsyslog service.
+    #cd /etc/
+    #sudo nano rsyslog.conf
+    uncomment the stuff under lines "# provides udp syslog reception" and "# provides tcp syslog reception"
+    comment out six lines total
+    control x, hit y
+    #sudo systemctl restart rsyslog
+-needed to make sarah a sudo user, had to go back to root and do #sudo usermod -aG wheel sarah
+    You can check to see if rsyslog is listening appropriately to these ports
+    #sudo netstat -tupan | grep 514
+
+Configuring rsyslog client on web01
+    go back to web01
+    create the file /etc/rsyslog.d/sec350.conf on web01
+    #cd /etc/rsyslog.d
+    #sudo nano sec350.conf
+    type the following in this file:
+    #user.notice @172.16.50.5
+            the line in sec350.conf means:
+            user=syslog facility
+            notice=syslog priority
+            @=UDP, @@ means TCP, so we are only going to send UDP
+            172.16.50.5=Remote Syslog Server
+   
+Test rsyslog messaging from web01 to log01
+On web01
+#sudo systemctl restart rsyslog
+#logger -t test TESTFROMWEB01TOLOG01
+On log01 
+#sudo tail /var/log/messages
+
+rw01->SSH->web01->SSH->log01
+From rw01, use a SSH session to login to web01, from that SSH session login to log01.
+go to rw01 and open terminal
+#ssh sarah@172.16.50.3
+#ssh sarah@172.16.50.5
