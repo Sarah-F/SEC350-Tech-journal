@@ -31,8 +31,8 @@ hostname ${hostname}
 function UserCon() {
 uN="sarah"
 uP="Password123"
-adduser ${uN} ${uP}
-adduser ${uN} sudo
+useradd -m ${uN} -p ${uP}
+usermod -aG sudo ${uN}
 }
 function LogCon() {
 echo "local0,auth,authpriv.*@172.16.200.10:1514;RYSYLOG_SyslogProtocol23Format" >> etc/rsyslog.d/sec350.conf
@@ -47,10 +47,10 @@ default-lease-time 600;
 max-lease-time 7200;
 authoritative;
 log-facility local0;
+
 subnet 172.16.150.0 netmask 255.255.255.0 {
  range 172.16.150.100 192.168.150.150;
  option routers 172.16.150.2;
- option domain-name-servers 192.168.1.1, 192.168.1.2;
 }
 " >> /etc/dhcp/dhcpd.conf
 systemctl restart dhcpd
