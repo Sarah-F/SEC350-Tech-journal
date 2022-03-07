@@ -30,4 +30,5 @@ set firewall name DMZ-to-LAN rule 20 state established enable
 commit
 save
 
+
 exit
