@@ -48,7 +48,7 @@ max-lease-time 7200;
 authoritative;
 log-facility local0;
 subnet 172.16.150.0 netmask 255.255.255.0 {
- range 172.16.150.20 192.168.1.69;
+ range 172.16.150.100 192.168.150.150;
  option routers 172.16.150.2;
  option domain-name-servers 192.168.1.1, 192.168.1.2;
 }
