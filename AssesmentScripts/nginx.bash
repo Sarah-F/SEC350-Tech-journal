@@ -7,7 +7,7 @@ rm ${conf}
 ip=172.16.50.5
 netmask=29
 gateway=172.16.50.2
-ns=172.16.50.3
+ns=172.16.50.2
 #echo the contents onto a file
 echo "
 network:
