@@ -24,7 +24,7 @@ network:
 netplan apply
 }
 function SysCon() {
-hostname="nginx01-nilesh"
+hostname="nginx01-sarah"
 #command to set hostname
 hostname ${hostname}
 }
