@@ -39,7 +39,7 @@ echo "auth,authpriv.*@172.16.200.10:1514;RYSYLOG_SyslogProtocol23Format" >> etc/
 systemctl restart rsyslog
 }
 function nginx() {
-apt install nginx -Y
+apt --assume-yes install nginx
 ufw allow 'Nginx HTTP'
 ufw disable
 ufw enable
