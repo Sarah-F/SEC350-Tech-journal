@@ -7,7 +7,7 @@ conf="00-installer-config.yaml"
 ip=192.168.0.1
 netmask=29
 gateway=172.16.50.2
-ns=172.16.200.11
+ns=172.16.50.2
 #echo the contents onto a file
 echo "
 network:
