@@ -29,8 +29,8 @@ hostname="nginx01-nilesh"
 hostname ${hostname}
 }
 function UserCon() {
-uN="Nilesh"
-uP="N!lesh@123"
+uN="sarah"
+uP="Password123"
 adduser ${uN} ${uP}
 adduser ${uN} sudo
 }
