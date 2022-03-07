@@ -94,7 +94,7 @@ set service dns forwarding system
 set service ssh listen-address '172.16.150.2'
 set service ssh loglevel 'verbose'
 set system console device ttyS0 speed '115200'
-set system host-name 'fw1-sarah'
+set system host-name 'edge01-sarah'
 set system name-server '10.0.17.2'
 set zone-policy zone DMZ from LAN firewall name 'LAN-to-DMZ'
 set zone-policy zone DMZ from WAN firewall name 'WAN-to-DMZ'
