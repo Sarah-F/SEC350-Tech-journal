@@ -2,7 +2,7 @@
 #storyline: Setup nginx on edge
 source /opt/vyatta/etc/functions/script-template
 
-config
+configure
 #make sure it can connect to the internet
 set firewall name DMZ-to-WAN rule 40 action accept
 set firewall name DMZ-to-WAN rule 40 description "allow nginx01 to connect to the web"
