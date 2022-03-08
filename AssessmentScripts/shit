@@ -1,0 +1,2 @@
+local0.* @172.16.200.10:1514;RSYSLOG_SyslogProtocol23Format
+auth,authpriv.* @172.16.200.10:1514;RSYSLOG_SyslogProtocol23Format
